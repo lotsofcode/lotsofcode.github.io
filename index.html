@@ -6,41 +6,112 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Mouse+Memoirs' rel='stylesheet' type='text/css'>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css" rel="stylesheet">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css" rel="stylesheet">        
         <style>
-            body { background-color: #000; background-image: url(binding_dark.png); }
-            #container { position: absolute; top: 20%; left: 50%;  margin-left: -200px; width: 400px;}
-            h1, p, ul { font-family : 'Mouse Memoirs'; text-align: center; }
-            h1 { font-size: 6em; color: #fff; text-shadow: 0 0 100px #999; letter-spacing: 1px; text-transform: uppercase; line-height: 1;}
-            p { font-size: 5em; margin: 0; line-height: .8; color: #b4d455; text-shadow: 0 0 100px #999; }
-            a { color: #ccc; font-weight: normal; font-size: 18px; }
-            a:hover {color: #b4d455; }
-            ul { margin-top: 40px; background-image: url(tweed.png); border-radius: 20px; padding: 10px 0; box-shadow: 0 0 100px #555; }
+            body {
+                font-size: 2em;
+                background-color: #000;
+                background-image: url(binding_dark.png);
+            }
+            .wrapper {
+                margin: 10% auto;
+                width: 80%;
+            }
+            h1, p, ul {
+                font-family : 'Mouse Memoirs';
+                text-align: center;
+            }
+            h1 { 
+                font-size: 4em; 
+                color: #fff; 
+                text-shadow: 1px 1px 1px #000, 0 0 150px #999; 
+                letter-spacing: 1px; 
+                text-transform: uppercase;
+                line-height: 1; 
+                margin-top: 40px;
+            }
+            p { 
+                font-size: 5em; 
+                margin: 0; 
+                line-height: 1; 
+                color: #b4d455; 
+                text-shadow: 1px 1px 2px #000, 0 0 100px #666; 
+                margin-top: -10px; 
+            }
+            a { 
+                color: #333; 
+                font-weight: normal;
+                font-size: 1.5em; 
+                text-shadow: 1px 1px 1px #999; 
+            }
+            a:hover { 
+                color: #333;
+                text-decoration: none;
+                text-shadow: 1px 1px 0px #ccc; 
+            }
+            ul { 
+                position: relative; 
+                background-image: url(tweed.png); 
+                border-radius: 20px; 
+                padding: 10px 0; 
+                box-shadow: 0 0 100px #555;
+                /*width: 80%;*/
+                margin: 40px auto;
+            }
+            ul li { 
+                vertical-align: middle; 
+            }
+            .me {
+                color: #fff;
+                font-size: 2.2em;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                vertical-align: middle;
+                text-shadow : 1px 1px 1px #000;
+                color : #b4d455;
+                line-height: 1.5;
+            }
             .img { 
                 width: 200px; 
                 height: 200px; 
-                margin: 0 auto; 
+                margin: 10px auto; 
                 display: block; 
                 border-radius: 200px;
                 background-color: #000;
                 background-image: url(http://www.gravatar.com/avatar/f850a3977ad29221ed108f319c7fe49c.png?size=250);
                 background-position: center center;
-                box-shadow: 0 0 100px #555; 
-                border: 1px inset #fff;
+                box-shadow: 0 0 50px #999; 
+            }
+            @media all and (min-width: 530px) {
+                body {
+                    font-size: 1.5em;
+                }
+                h1 {
+                    font-size: 6em;
+                }
+                .wrapper {
+                    width: 420px;
+                }
+                .me {
+                    position: absolute;
+                    left: -5%;
+                    top: -20px;
+                    -webkit-transform: rotate(-10deg);
+                    transform: rotate(-10deg);
+                }
             }
         </style>
     </head>
     <body>
 
-        <div id="container">
+        <div class="wrapper">
             <div class="img"></div>
 
             <h1>Del Harvey</h1>
             <p>Developer</p>
 
-
             <ul class="list-inline">
+                <li class="me">Stalk Me</li>
                 <li><a href="//facebook.com/lotsofcode" target="_blank">facebook</a></li>
                 <li><a href="//twitter.com/lotsofcode" target="_blank">twitter</a></li>
                 <li><a href="//github.com/lotsofcode" target="_blank">github</a></li>
