@@ -120,13 +120,13 @@
                 bottom: auto;
             }
             .cssanimations ul {
-                bottom: -1000px;
+                bottom: -100px;
                 -webkit-transform: scale(0);
             }
-            .cssanimations .deploy ul {
+            .cssanimations .deploy2 ul {
                 bottom: 0;
                 -webkit-transform: scale(1);
-                -webkit-transition: all 1.5s ease-in-out;
+                -webkit-transition: all 1s ease-in-out;
             }
             /* mediaqueries */
             @media all and (min-width: 530px) {
@@ -193,6 +193,9 @@
 
                 window.setTimeout(function() {
                     body.className += ' deploy';
+                    window.setTimeout(function() {
+                        body.className += ' deploy2';
+                    }, 1000);
                 }, 1000);
             })(window);
         </script>
