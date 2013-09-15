@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Mouse+Memoirs' rel='stylesheet' type='text/css'>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css" rel="stylesheet">        
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <style>
             body {
                 font-size: 2em;
@@ -131,6 +131,21 @@
                 -webkit-transform: scale(1);
                 -webkit-transition: all 1s ease-in-out;
             }
+            .cssanimations .slide {
+                -webkit-transition: all 500ms cubic-bezier(0.680, 0, 0.265, 1); /* older webkit */
+                -webkit-transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                   -moz-transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                    -ms-transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                     -o-transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                        transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); /* easeInOutBack */
+                
+                -webkit-transition-timing-function: cubic-bezier(0.680, 0, 0.265, 1); /* older webkit */
+                -webkit-transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                   -moz-transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                    -ms-transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                     -o-transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                        transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); /* easeInOutBack */
+            }
             /* mediaqueries */
             @media all and (min-width: 530px) {
                 body {
@@ -163,46 +178,390 @@
                     height: 300px;
                 }
             }
+            .next-slide, .prev-slide {
+                position: absolute;
+                right: 0;
+                padding: 50px;
+                font-size: 50px;
+                color: rgba(255,255,255,.8);
+            }
+            .next-slide {
+                bottom: 0;
+            }
+            .top-slide {
+                bottom: 0;
+            }
+            /* slide */
+            .slide {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+            }
+            .onscreen {
+                top: 0;
+            }
+            .offscreen-above {
+                top: -100%;
+            }
+            .offscreen-below {
+                top: 100%;
+            }
+            
+            [data-columns]::before { display: none; } /* Don't forget this. */
+
+            .tweets[data-columns]::before {
+                content: '2 .column.one-half';
+            }
+            
+            @media screen and (min-width: 601px) and (max-width: 768px) {
+              .tweets[data-columns]::before {
+                content: '3 .column.one-third';
+              }
+            }
+
+            @media screen and (min-width: 769px) {
+              .tweets[data-columns]::before {
+                content: '4 .column.one-quarter';
+              }
+            }
+            
+            .item {
+              margin: 0 10px 20px;
+              padding: 20px;
+              color: #e67650;
+              background: #743117;
+              background: rgba(0,0,0,0.5);
+              border-radius: 2px;
+              box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
+            }
+            
+            .column {
+              float: left;
+            }
+            
+            .one-half {
+              width: 50%;
+            }
+            .one-third {
+              width: 33.333%;
+            }
+            .one-quarter {
+              width: 25%;
+            }
+            
+            .slide-loading {
+                position: absolute;
+                top: 0;
+                z-index: 100;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, .5);
+                
+                
+                -webkit-transition: all 500ms cubic-bezier(0.680, 0, 0.265, 1); /* older webkit */
+                -webkit-transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                   -moz-transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                    -ms-transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                     -o-transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                        transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); /* easeInOutBack */
+                
+                -webkit-transition-timing-function: cubic-bezier(0.680, 0, 0.265, 1); /* older webkit */
+                -webkit-transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                   -moz-transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                    -ms-transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                     -o-transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+                        transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550); /* easeInOutBack */
+                
+            }
+            
+            .slide-loading-hidden {
+                opacity: 0;
+            }
+            
+              .loader1 {
+                margin: 0 auto;
+                height: 100%;
+                width: 100%;
+                top: 50%;
+                left: 50%;
+                position:absolute;
+                -webkit-animation:spin 1.5s linear infinite;
+                -moz-animation:spin 1.5s linear infinite;
+              }
+              .loader1 i{
+                height: 20px;
+                width: 20px;
+                border-radius: 25px;
+                display: block;
+                position:absolute;
+              }
+              .loader1 i:before,
+              .loader1 i:after{
+                  content:'';
+                  display:block;
+                  position:absolute;
+                  height:inherit;
+                  width:inherit;
+                  border-radius: inherit;
+              }
+              .loader1 i:first-child:before {
+                background:rgba(52, 149, 221, 0.9);
+                -webkit-animation:rotate-top-left 1.5s linear infinite;
+                -moz-animation:rotate-top-left 1.5s linear infinite;
+              }
+              .loader1 i:first-child:after {
+                background:rgba(225, 73, 44, 0.9);
+                -webkit-animation:rotate-top-right 1.5s linear infinite;
+                -moz-animation:rotate-top-right 1.5s linear infinite;
+              }
+              .loader1 i:last-child:before {
+                background:rgba(249, 206, 43, 0.9);
+                -webkit-animation:rotate-bottom-left 1.5s linear infinite;
+                -moz-animation:rotate-bottom-left 1.5s linear infinite;
+              }
+              .loader1 i:last-child:after {
+                background:rgba(0, 153, 117, 0.9);
+                -webkit-animation:rotate-bottom-right 1.5s linear infinite;
+                -moz-animation:rotate-bottom-right 1.5s linear infinite;
+              }
+                        
+             @-webkit-keyframes spin{
+                0%{
+                  -webkit-transform:rotate(0deg);
+                }
+                50%{
+                  -webkit-transform:rotate(-180deg);
+                }
+                100%{
+                  -webkit-transform:rotate(-360deg);
+                }
+              }
+              @-webkit-keyframes rotate-top-right{
+                0%{
+                  -webkit-transform:rotate(0deg);
+                }
+                50%{
+                  -webkit-transform:rotate(-180deg);
+                  -webkit-transform-origin: 20% 20%;
+                }
+                100%{
+                  -webkit-transform:rotate(-360deg);
+                }
+              }
+              @-webkit-keyframes rotate-top-left{
+                0%{
+                  -webkit-transform:rotate(0deg);
+                }
+                50%{
+                  -webkit-transform:rotate(180deg);
+                  -webkit-transform-origin: 80% 20%;
+                }
+                100%{
+                  -webkit-transform:rotate(360deg);
+                }
+              }
+              @-webkit-keyframes rotate-bottom-right{
+                0%{
+                  -webkit-transform:rotate(0deg);
+                }
+                50%{
+                  -webkit-transform:rotate(-180deg);
+                  -webkit-transform-origin: 80% 80%;
+                }
+                100%{
+                  -webkit-transform:rotate(-360deg);
+                }
+              }
+              @-webkit-keyframes rotate-bottom-left{
+                0%{
+                  -webkit-transform:rotate(0deg);
+                }
+                50%{
+                  -webkit-transform:rotate(180deg);
+                  -webkit-transform-origin: 20% 80%;
+                }
+                100%{
+                  -webkit-transform:rotate(360deg);
+                }
+              }
+              
+              @-moz-keyframes spin{
+                0%{
+                  -moz-transform:rotate(0deg);
+                }
+                50%{
+                  -moz-transform:rotate(-180deg);
+                }
+                100%{
+                  -moz-transform:rotate(-360deg);
+                }
+              }
+              @-moz-keyframes rotate-top-right{
+                0%{
+                  -moz-transform:rotate(0deg);
+                }
+                50%{
+                  -moz-transform:rotate(-180deg);
+                  -moz-transform-origin: 20% 20%;
+                }
+                100%{
+                  -moz-transform:rotate(-360deg);
+                }
+              }
+              @-moz-keyframes rotate-top-left{
+                0%{
+                  -moz-transform:rotate(0deg);
+                }
+                50%{
+                  -moz-transform:rotate(180deg);
+                  -moz-transform-origin: 80% 20%;
+                }
+                100%{
+                  -moz-transform:rotate(360deg);
+                }
+              }
+              @-moz-keyframes rotate-bottom-right{
+                0%{
+                  -moz-transform:rotate(0deg);
+                }
+                50%{
+                  -moz-transform:rotate(-180deg);
+                  -moz-transform-origin: 80% 80%;
+                }
+                100%{
+                  -moz-transform:rotate(-360deg);
+                }
+              }
+              @-moz-keyframes rotate-bottom-left{
+                0%{
+                  -moz-transform:rotate(0deg);
+                }
+                50%{
+                  -moz-transform:rotate(180deg);
+                  -moz-transform-origin: 20% 80%;
+                }
+                100%{
+                  -moz-transform:rotate(360deg);
+                }
+              }           
+            
         </style>
         <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
     </head>
     <body>
 
-        <div class="wrapper">
-            <div class="img"></div>
-            <h1>Del Harvey</h1>
-            <p>Web Developer</p>
-            <ul class="list-inline">
-                <li class="me">Stalk Me</li>
-                <li><a href="//facebook.com/lotsofcode" target="_blank">facebook</a></li>
-                <li><a href="//twitter.com/lotsofcode" target="_blank">twitter</a></li>
-                <li><a href="//github.com/lotsofcode" target="_blank">github</a></li>
-                <li><a href="//koding.com/lotsofcode" target="_blank">koding</a></li>
-                <li><a href="//gplus.to/lotsofcode" target="_blank">google+</a></li>
-            </ul>
+        <div class="slide hello">
+            
+            <div class="wrapper">
+                <div class="img"></div>
+                <h1>Del Harvey</h1>
+                <p>Web Developer</p>
+                <ul class="list-inline">
+                    <li class="me">Stalk Me</li>
+                    <li><a href="//facebook.com/lotsofcode" target="_blank">facebook</a></li>
+                    <li><a href="//twitter.com/lotsofcode" target="_blank">twitter</a></li>
+                    <li><a href="//github.com/lotsofcode" target="_blank">github</a></li>
+                    <li><a href="//koding.com/lotsofcode" target="_blank">koding</a></li>
+                    <li><a href="//gplus.to/lotsofcode" target="_blank">google+</a></li>
+                </ul>
+            </div>
+
+            <a href="" class="next-slide" data-slide-to="twitter">
+                <i class="icon-circle-arrow-down"></i>
+            </a>
+
         </div>
+
+        <div class="slide twitter offscreen-below">
+            <div class="slide-loading">
+                <div class="loader1">
+                    <i></i><i></i>
+                </div>
+            </div>
+<!--             <a href="" class="prev-slide" data-slide-to="hello">
+                <i class="icon-circle-arrow-up"></i>
+            </a>
+             -->
+            <h1>Twitter</h1>
+    
+            <div class="tweets" data-columns>
+            
+            </div>
+            
+<!--             <a href="" class="next-slide" data-slide-to="twitter">
+                <i class="icon-circle-arrow-down"></i>
+            </a> -->
+    
+        </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+        <script src="salvattore.js"></script>
 
         <script>
             ;(function(window, undefined) {
-                var body, h1, words, i = 1, html = '';
+                
+                var app = [];
 
-                body = document.querySelector('body');
+                app.hello = function() {
+                    var body, h1, words, i = 1, html = '';
 
-                h1 = body.querySelector('h1');
-                words = h1.innerHTML.split(' ');
+                    body = document.querySelector('body');
 
-                for (word in words) {
-                    html += '<span class="word word' + i + '">' + words[word] + '</span> ';
-                    i++;
-                }
-                h1.innerHTML = html;
+                    h1 = body.querySelector('h1');
+                    words = h1.innerHTML.split(' ');
 
-                window.setTimeout(function() {
-                    body.className += ' deploy';
+                    for (word in words) {
+                        html += '<span class="word word' + i + '">' + words[word] + '</span> ';
+                        i++;
+                    }
+                    h1.innerHTML = html;
+
                     window.setTimeout(function() {
-                        body.className += ' deploy2';
+                        body.className += ' deploy';
+                        window.setTimeout(function() {
+                            body.className += ' deploy2';
+                        }, 1000);
                     }, 1000);
-                }, 1000);
+                    
+                    $('.icon-circle-arrow-down').bind('click', function(e) {
+                        e.preventDefault();
+                        
+                        $('.hello').addClass( 'offscreen-above' );
+                        $('.twitter').removeClass('offscreen-below')
+                            .addClass( 'onscreen' );
+                            
+                        app.tweets();
+                    });
+                }
+                
+                app.tweets = function() {
+                    
+                    $.ajax({
+                      url: "http://localhost:5000/tweets"
+                    }).done(function ( data ) {
+                      
+                      var grid = document.querySelector('.tweets');
+                      
+                      var html = '';
+                      _.each(data, function(row) {
+                          var item = document.createElement('article');
+                          item.className += 'item';
+
+                          item.innerHTML  = _.template('<%= text %>', row);
+                          
+                          salvattore['append_elements'](grid, [item])
+                      })
+                      
+                      $('.slide-loading').addClass('slide-loading-hidden');
+                      
+                    });
+                    
+                }
+
+                app.hello();
+
             })(window);
         </script>
 
