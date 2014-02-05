@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>lotsofcode.com</title>
+        <title>Del Harvey, Web Developer based in Northampton</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Mouse+Memoirs' rel='stylesheet' type='text/css'>
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css" rel="stylesheet">        
+        <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.css" rel="stylesheet">
         <style>
+            html {
+              font-family: sans-serif;
+              -webkit-text-size-adjust: 100%;
+              -ms-text-size-adjust: 100%;
+              font-size: 62.5%;
+            }
+
+            *, *:before, *:after {
+              -webkit-box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              box-sizing: border-box;
+            }
+
             body {
                 font-size: 2em;
+                line-height: 1.428571429;
                 background-color: #000;
                 background-image: url(binding_dark.png);
             }
@@ -21,39 +34,42 @@
                 font-family : 'Mouse Memoirs';
                 text-align: center;
             }
-            h1 { 
-                font-size: 4em; 
-                color: #fff; 
-                text-shadow: 1px 1px 1px #000, 0 0 150px #999; 
-                letter-spacing: 1px; 
+            h1 {
+                font-size: 4em;
+                color: #fff;
+                text-shadow: 1px 1px 1px #000, 0 0 150px #999;
+                letter-spacing: 1px;
                 text-transform: uppercase;
-                line-height: 1; 
+                line-height: 1;
                 margin-top: 40px;
+                margin-bottom: 10px;
+                font-weight: 500;
             }
-            p { 
-                font-size: 3em; 
-                margin: 0; 
-                line-height: 1; 
-                color: #b4d455; 
-                text-shadow: 1px 1px 2px #000, 0 0 100px #666; 
-                margin-top: -10px; 
+            p {
+                font-size: 3em;
+                margin: 0;
+                line-height: 1;
+                color: #b4d455;
+                text-shadow: 1px 1px 2px #000, 0 0 100px #666;
+                margin-top: -10px;
             }
-            a { 
-                color: #333; 
+            a {
+                color: #333;
                 font-weight: normal;
-                font-size: 1.5em; 
-                text-shadow: 1px 1px 1px #999; 
+                font-size: 1.5em;
+                text-shadow: 1px 1px 1px #999;
+                text-decoration: none;
             }
-            a:hover { 
+            a:hover {
                 color: #333;
                 text-decoration: none;
-                text-shadow: 1px 1px 0px #ccc; 
+                text-shadow: 1px 1px 0px #ccc;
             }
-            ul { 
-                position: relative; 
-                background-image: url(tweed.png); 
-                border-radius: 20px; 
-                padding: 10px 0; 
+            ul {
+                position: relative;
+                background-image: url(tweed.png);
+                border-radius: 20px;
+                padding: 10px 0;
                 box-shadow: 0 0 100px #555;
                 /*width: 80%;*/
                 margin: 40px auto;
@@ -61,8 +77,8 @@
             .list-inline > li {
                 padding: 0 10px;
             }
-            ul li { 
-                vertical-align: middle; 
+            ul li {
+                vertical-align: middle;
             }
             .me {
                 color: #fff;
@@ -75,28 +91,28 @@
                 line-height: 1.5;
                 left: auto;
             }
-            .img { 
-                width: 100px; 
-                height: 100px; 
-                margin: 10px auto; 
-                display: block; 
+            .img {
+                width: 100px;
+                height: 100px;
+                margin: 10px auto;
+                display: block;
                 border-radius: 400px;
                 background-color: #000;
                 background-image: url(http://www.gravatar.com/avatar/f850a3977ad29221ed108f319c7fe49c.png?size=250);
                 background-position: center center;
-                box-shadow: 0 0 50px #999; 
-                background-size: 120%;
+                box-shadow: 0 0 50px #999;
+                background-size: 100%;
                 position: relative;
             }
             /* animations */
             .cssanimations .img {
                 top: -1000px;
                 -webkit-transform: scale(0);
-                -webkit-transition: all 1s ease-in-out; 
-                -webkit-backface-visibility: hidden; 
+                -webkit-transition: all 1s ease-in-out;
+                -webkit-backface-visibility: hidden;
                 -webkit-perspective: 1000;
             }
-            .cssanimations .deploy .img {
+            .cssanimations .steady .img {
                 top: 0;
                 -webkit-transform: scale(1);
             }
@@ -104,29 +120,29 @@
                 -webkit-transition: all 1s ease-in-out;
                 position: relative;
             }
-            .cssanimations .word1 {
+            .cssanimations .ready .word1 {
                 left: -1000px;
             }
-            .cssanimations .word2 {
+            .cssanimations .ready .word2 {
                 left: 1000px;
             }
-            .cssanimations .deploy .word1,
-            .cssanimations .deploy .word2 {
-                left: auto;
+            .cssanimations .steady .word1,
+            .cssanimations .steady .word2 {
+                left: 0;
             }
             .cssanimations p {
                 position: relative;
                 bottom: -500px;
                 -webkit-transition: all 1s ease-in-out;
             }
-            .cssanimations .deploy p {
-                bottom: auto;
+            .cssanimations .steady p {
+                bottom: 0;
             }
             .cssanimations ul {
                 bottom: -100px;
                 -webkit-transform: scale(0);
             }
-            .cssanimations .deploy2 ul {
+            .cssanimations .go ul {
                 bottom: 0;
                 -webkit-transform: scale(1);
                 -webkit-transition: all 1s ease-in-out;
@@ -143,8 +159,8 @@
                     width: 500px;
                 }
                 .img {
-                    width: 200px; 
-                    height: 200px; 
+                    width: 200px;
+                    height: 200px;
                 }
                 .me {
                     position: absolute;
@@ -163,11 +179,22 @@
                     height: 300px;
                 }
             }
+
+            .list-inline {
+              padding-left: 0;
+              list-style: none;
+            }
+
+            .list-inline > li {
+              display: inline-block;
+              padding-right: 5px;
+              padding-left: 5px;
+            }
+
         </style>
         <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
     </head>
     <body>
-
         <div class="wrapper">
             <div class="img"></div>
             <h1>Del Harvey</h1>
@@ -181,30 +208,26 @@
                 <li><a href="//gplus.to/lotsofcode" target="_blank">google+</a></li>
             </ul>
         </div>
-
         <script>
             ;(function(window, undefined) {
                 var body, h1, words, i = 1, html = '';
-
                 body = document.querySelector('body');
-
                 h1 = body.querySelector('h1');
                 words = h1.innerHTML.split(' ');
-
-                for (word in words) {
-                    html += '<span class="word word' + i + '">' + words[word] + '</span> ';
-                    i++;
+                for (var i = 0; i < words.length; i++) {
+                    html += '<span class="word word' + (i + 1) + '">' + words[i] + '</span> ';
                 }
                 h1.innerHTML = html;
-
-                window.setTimeout(function() {
-                    body.className += ' deploy';
-                    window.setTimeout(function() {
-                        body.className += ' deploy2';
-                    }, 1000);
-                }, 1000);
+                document.addEventListener('DOMContentLoaded', function(){
+                  body.className += ' ready';
+                  window.setTimeout(function() {
+                      body.className += ' steady';
+                      window.setTimeout(function() {
+                          body.className += ' go';
+                      }, 1000);
+                  }, 1000);
+                });
             })(window);
         </script>
-
     </body>
 </html>
