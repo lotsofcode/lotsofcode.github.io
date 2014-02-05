@@ -104,49 +104,6 @@
                 background-size: 100%;
                 position: relative;
             }
-            /* animations */
-            .img {
-                top: -1000px;
-                -webkit-transform: scale(0);
-                -webkit-transition: all 1s ease-in-out;
-                -webkit-backface-visibility: hidden;
-                -webkit-perspective: 1000;
-            }
-            .steady .img {
-                top: 0;
-                -webkit-transform: scale(1);
-            }
-            .word {
-                -webkit-transition: all 1s ease-in-out;
-                position: relative;
-            }
-            .ready .word1 {
-                left: -1000px;
-            }
-            .ready .word2 {
-                left: 1000px;
-            }
-            .steady .word1,
-            .steady .word2 {
-                left: 0;
-            }
-            p {
-                position: relative;
-                bottom: -500px;
-                -webkit-transition: all 1s ease-in-out;
-            }
-            .steady p {
-                bottom: 0;
-            }
-            ul {
-                bottom: -100px;
-                -webkit-transform: scale(0);
-            }
-            .go ul {
-                bottom: 0;
-                -webkit-transform: scale(1);
-                -webkit-transition: all 1s ease-in-out;
-            }
             /* mediaqueries */
             @media all and (min-width: 530px) {
                 body {
@@ -178,6 +135,53 @@
                 .img {
                     width: 300px;
                     height: 300px;
+                }
+
+                /* animations */
+                .word {
+                    -webkit-transition: all 1s ease-in-out;
+                    position: relative;
+                }
+                .ready .word1 {
+                    left: -1000px;
+                }
+                .ready .word2 {
+                    left: 1000px;
+                }
+                .steady .word1,
+                .steady .word2 {
+                    left: 0;
+                }
+
+                p {
+                    position: relative;
+                    bottom: -500px;
+                    -webkit-transition: all 1s ease-in-out;
+                }
+                .steady p {
+                    bottom: 0;
+                }
+
+                .img {
+                    top: -1000px;
+                    -webkit-transform: scale(0);
+                    -webkit-transition: all 1s ease-in-out;
+                    -webkit-backface-visibility: hidden;
+                    -webkit-perspective: 1000;
+                }
+                .steady .img {
+                  top: 0;
+                  -webkit-transform: scale(1);
+                }
+
+                ul {
+                  bottom: -100px;
+                  -webkit-transform: scale(0);
+                }
+                .go ul {
+                  bottom: 0;
+                  -webkit-transform: scale(1);
+                  -webkit-transition: all 1s ease-in-out;
                 }
             }
 
